@@ -12,9 +12,9 @@
 ### Comparison
 Model 2, which uses two predictors, performs better than Model 1 if R2 is higher and MSE is lower. 
 
-Explanation:
-Load the models using joblib.load().
-Reload the dataset.
-Extract the same features used for training.
-Prepare input data for predictions.
-Use .predict() to generate predictions.
+**Explanation:**
+- Load the models using joblib.load().
+- Reload the dataset.
+- Extract the same features used for training.
+- Prepare input data for predictions.
+- Use .predict() to generate predictions.
