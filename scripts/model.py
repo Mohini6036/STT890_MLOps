@@ -8,7 +8,7 @@ from sklearn.metrics import mean_squared_error, r2_score
 import joblib
 import os
 
-data_path = r'D:\Spring_2025\STT_890\STT890_MLOps\data\sampregdata.csv'
+data_path = r'data/sampregdata.csv'
 df = pd.read_csv(data_path)
 
 correlations = df.corr()['y'].drop('y')
