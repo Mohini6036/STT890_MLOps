@@ -11,13 +11,13 @@ import os
 data_path = r'D:\Spring_2025\STT_890\STT890_MLOps\sampregdata.csv'
 df = pd.read_csv(data_path)
 
-correlations = df.corr()['Y'].drop('Y')
+correlations = df.corr()['y'].drop('y')
 best_X = correlations.abs().idxmax()
 
 print(f"Best predictor for Y: {best_X}")
 
 X = df[[best_X]]
-y = df['Y']
+y = df['y']
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.3, random_state=42)
 
 model_1 = LinearRegression()
@@ -48,3 +48,23 @@ r2_2 = r2_score(y_test, y_pred_2)
 print(f"Model 2 - MSE: {mse_2}, R2: {r2_2}")
 
 joblib.dump(model_2, "models/model_2.pkl")
+
+readme_content = f"""
+# Regression Models
+
+## Model 1 (Single Predictor: {best_X})
+- MSE: {mse_1}
+- R2 Score: {r2_1}
+
+## Model 2 (Two Predictors: {best_X}, {second_best_X})
+- MSE: {mse_2}
+- R2 Score: {r2_2}
+
+### Comparison
+Model 2, which uses two predictors, performs better than Model 1 if R2 is higher and MSE is lower. 
+"""
+
+with open("README.md", "w") as f:
+    f.write(readme_content)
+
+print("README file created successfully.")
